@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProfileAnimatedMenu">
+        <attr name="handleIconRes" format="integer" />
+        <attr name="profileImage" format="integer" />
+        <attr name="numberOfMenuItems" format="integer" />
+        <attr name="animateItemOnClick" format="boolean" />
+        <attr name="allowItemRotationAnim" format="boolean" />
+
+        <attr name="itemOneIconRes" format="integer" />
+        <attr name="itemTwoIconRes" format="integer" />
+        <attr name="itemThreeIconRes" format="integer" />
+        <attr name="itemFourIconRes" format="integer" />
+        <attr name="itemFiveIconRes" format="integer" />
+    </declare-styleable>
+</resources>
