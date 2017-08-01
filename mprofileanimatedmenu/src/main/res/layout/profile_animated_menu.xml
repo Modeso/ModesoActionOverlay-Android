@@ -48,9 +48,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="24dp"
+        android:animateLayoutChanges="false"
         android:clipToPadding="false"
         android:gravity="center"
-
         android:orientation="horizontal"
         android:padding="20dp">
 
@@ -59,13 +59,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-
+            android:scaleType="fitCenter"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:alpha="0"
-            android:minHeight="100dp"
-            android:minWidth="100dp"
-            android:padding="20dp"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:padding="15dp"
             android:visibility="visible"
            />
 
@@ -77,9 +77,10 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:alpha="0"
-            android:minHeight="100dp"
-            android:minWidth="100dp"
-            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:padding="15dp"
             android:visibility="visible"
            />
 
@@ -91,9 +92,10 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:alpha="0"
-            android:minHeight="100dp"
-            android:minWidth="100dp"
-            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:padding="15dp"
             android:visibility="visible"
             />
 
@@ -105,9 +107,10 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:alpha="0"
-            android:minHeight="100dp"
-            android:minWidth="100dp"
-            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:padding="15dp"
             android:visibility="visible"
             />
 
@@ -119,9 +122,10 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:alpha="0"
-            android:minHeight="100dp"
-            android:minWidth="100dp"
-            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:padding="15dp"
             android:visibility="visible"
             />
     </LinearLayout>

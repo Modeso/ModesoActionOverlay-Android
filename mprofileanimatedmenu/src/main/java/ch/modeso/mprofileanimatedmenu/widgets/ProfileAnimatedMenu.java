@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.PathInterpolator;
@@ -62,7 +63,6 @@ public class ProfileAnimatedMenu extends FrameLayout {
     private boolean allowItemRotationAnim = false;
     private int profileImageRes = -1;
     private int handleImageRes = -1;
-
     private int optionOneIconRes = -1;
     private int optionTwoIconRes = -1;
     private int optionThreeIconRes = -1;
@@ -230,11 +230,11 @@ public class ProfileAnimatedMenu extends FrameLayout {
         ObjectAnimator closeBtnAnimRotation = ObjectAnimator.ofFloat(closeMenuBtn,"rotation",180.0f);
 
 
-        animX.setDuration(200);
-        animY.setDuration(200);
+        animX.setDuration(150);
+        animY.setDuration(150);
 
-        frontHandleAnimX.setDuration(200);
-        frontHandleAnimY.setDuration(200);
+        frontHandleAnimX.setDuration(150);
+        frontHandleAnimY.setDuration(150);
 
         //A cubic-bezier curve interpolator for move animes
         Interpolator interpolator = PathInterpolatorCompat.create(0.2f,0.4f,//First Point
@@ -242,10 +242,13 @@ public class ProfileAnimatedMenu extends FrameLayout {
         animX.setInterpolator(interpolator);
         frontHandleAnimX.setInterpolator(interpolator);
 
+        animScaleX.setInterpolator(new AccelerateInterpolator(1.5f));
+        animScaleY.setInterpolator(new AccelerateInterpolator(1.5f));
+
         animScaleX.setDuration(200);
         animScaleY.setDuration(200);
-        animScaleX.setStartDelay(200);
-        animScaleY.setStartDelay(200);
+        animScaleX.setStartDelay(130);
+        animScaleY.setStartDelay(130);
         animAlpha.setDuration(400);
         disappearAnim.setDuration(150);
         shieldAnimAlpha.setDuration(200);
@@ -414,6 +417,11 @@ public class ProfileAnimatedMenu extends FrameLayout {
         closeBtnAnimAlpha.setDuration(350);
         closeBtnAnimRotation.setDuration(350);
 
+        animX.setInterpolator(new AccelerateDecelerateInterpolator());
+        animY.setInterpolator(new AccelerateDecelerateInterpolator());
+        frontHandleAnimX.setInterpolator(new AccelerateDecelerateInterpolator());
+        frontHandleAnimY.setInterpolator(new AccelerateDecelerateInterpolator());
+
         closeMenuAnimatorSet = new AnimatorSet();
         closeMenuAnimatorSet.playTogether(animX, animY,animScaleX,animScaleY,animAlpha,shieldAnimAlpha,
                 closeBtnAnimAlpha,closeBtnAnimRotation,appearAnim,frontHandleAnimX,frontHandleAnimY);
@@ -514,6 +522,85 @@ public class ProfileAnimatedMenu extends FrameLayout {
         return closeRunning;
     }
 
+    public int getOptionOneIconRes() {
+        return optionOneIconRes;
+    }
 
+    public void setOptionOneIconRes(int optionOneIconRes) {
+        this.optionOneIconRes = optionOneIconRes;
+        ((AnimatedMenuItem)menuItemsContainer.getChildAt(0)).setImageResource(optionOneIconRes);
+    }
 
+    public int getOptionTwoIconRes() {
+        return optionTwoIconRes;
+    }
+
+    public void setOptionTwoIconRes(int optionTwoIconRes) {
+        this.optionTwoIconRes = optionTwoIconRes;
+        ((AnimatedMenuItem)menuItemsContainer.getChildAt(1)).setImageResource(optionTwoIconRes);
+    }
+
+    public int getOptionThreeIconRes() {
+        return optionThreeIconRes;
+    }
+
+    public void setOptionThreeIconRes(int optionThreeIconRes) {
+        this.optionThreeIconRes = optionThreeIconRes;
+        ((AnimatedMenuItem)menuItemsContainer.getChildAt(2)).setImageResource(optionThreeIconRes);
+    }
+
+    public int getOptionFourIconRes() {
+        return optionFourIconRes;
+    }
+
+    public void setOptionFourIconRes(int optionFourIconRes) {
+        this.optionFourIconRes = optionFourIconRes;
+        ((AnimatedMenuItem)menuItemsContainer.getChildAt(3)).setImageResource(optionFourIconRes);
+    }
+
+    public int getOptionFiveIconRes() {
+        return optionFiveIconRes;
+    }
+
+    public void setOptionFiveIconRes(int optionFiveIconRes) {
+        this.optionFiveIconRes = optionFiveIconRes;
+        ((AnimatedMenuItem)menuItemsContainer.getChildAt(4)).setImageResource(optionFiveIconRes);
+    }
+    public int getNumberOfMenuItems() {
+        return numberOfMenuItems;
+    }
+
+    public void setNumberOfMenuItems(int numberOfMenuItems) {
+        this.numberOfMenuItems = numberOfMenuItems;
+        int childCount = menuItemsContainer.getChildCount();
+        for (int i = 0; i < childCount; i++){
+            AnimatedMenuItem item = (AnimatedMenuItem) menuItemsContainer.getChildAt(i);
+            item.setIndex(i+1);
+            if(i<numberOfMenuItems){
+                item.setVisibility(VISIBLE);
+            }else
+                item.setVisibility(GONE);
+        }
+    }
+
+    public int getProfileImageRes() {
+        return profileImageRes;
+    }
+
+    public void setProfileImageRes(int profileImageRes) {
+        this.profileImageRes = profileImageRes;
+        if(profileImageRes > 0)
+            profileImage.setImageResource(profileImageRes);
+    }
+
+    public int getHandleImageRes() {
+        return handleImageRes;
+    }
+
+    public void setHandleImageRes(int handleImageRes) {
+        this.handleImageRes = handleImageRes;
+        if(handleImageRes>0){
+            frontHandle.setImageResource(handleImageRes);
+        }
+    }
 }

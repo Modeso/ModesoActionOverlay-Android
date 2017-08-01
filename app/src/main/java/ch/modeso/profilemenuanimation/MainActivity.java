@@ -3,6 +3,7 @@ package ch.modeso.profilemenuanimation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +13,7 @@ import ch.modeso.mprofileanimatedmenu.widgets.AnimatedMenuItem;
 import ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ProfileAnimatedMenu.OnOpenCloseListener {
 
     private static  final String TAG = MainActivity.class.getSimpleName();
     private ProfileAnimatedMenu profileAnimatedMenu;
@@ -26,16 +27,25 @@ public class MainActivity extends AppCompatActivity {
         selectedOptionText = (TextView) findViewById(R.id.selected_option_item);
         List<AnimatedMenuItem> items  = profileAnimatedMenu.getMenuItems();
 
-        for(AnimatedMenuItem item:items){
+        for(final AnimatedMenuItem item:items){
             item.setOnItemClicked(new AnimatedMenuItem.OnMenuItemClicked() {
                 @Override
                 public void onMenuItemClicked(AnimatedMenuItem item) {
                     selectedOptionText.setText(String.format("Option No :%d is Clicked !",
                             item.getIndex()));
+                    if(item.getIndex() == 1){
+                        profileAnimatedMenu.setNumberOfMenuItems(3);
+                    }
+                    if(item.getIndex() == 2){
+                        profileAnimatedMenu.setOptionFourIconRes(R.drawable.option4_icon);
+                        //profileAnimatedMenu.setOptionFiveIconRes(R.drawable.option5_icon);
+                        profileAnimatedMenu.setNumberOfMenuItems(4);
+                    }
                 }
             });
         }
-
+//      Adding open-close listener
+        profileAnimatedMenu.setOnOpenCloseListener(this);
     }
 
 
@@ -45,5 +55,18 @@ public class MainActivity extends AppCompatActivity {
             profileAnimatedMenu.closeMenu();
         }else
              super.onBackPressed();
+    }
+
+    @Override
+    public void onActionStarted(int actionType) {
+
+    }
+
+    @Override
+    public void onActionEnded(int actionType) {
+        if(actionType== ProfileAnimatedMenu.OnOpenCloseListener.ACTION_TYPE_OPEN)
+            selectedOptionText.setText("Menu opened !");
+        else
+            selectedOptionText.setText("Menu closed !");
     }
 }
