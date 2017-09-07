@@ -7,7 +7,7 @@
 
 ModesoActionOverlay-Android is an android Animated menu for user profile screens . 
 It's inspired by [Anton Aheichanka](https://dribbble.com/madebyanton)'s [design](https://dribbble.com/shots/1977070-Profile-Screen-Animation).
-It enable creating questionnaire with a lot of features and ease of use
+It enable creating animated Menu with a customized appearance
 
 <img src="https://cdn.dribbble.com/users/62319/screenshots/1977070/shot.gif">
 
@@ -61,19 +61,16 @@ It enable creating questionnaire with a lot of features and ease of use
 ```
 - in **Activity** or **Fragment**
 ```
-  mcompound_questionnaire.updateList(title.toMutableList())
-  mcompound_questionnaire.cardInteractionCallBacks = this
+   profileAnimatedMenu = new ProfileAnimatedMenu(context,...)
 ```
-	- use updateList(itemsList: MutableList<BaseModel>) to create/update question list
-	- use cardInteractionCallBacks to set callback for user action on each question
+	- setNumberOfMenuItems(3) // 3 menu items...
+	- setHandleImageRes(R.drawable.handle_image) // handle resource..
+	- closeMenu() //closes the menu
+	- openMenu() //opens the menu
+	- OnOpenCloseListener// use to listen for open/close actions
 
 ## Options
-- XML **Attributes**
-  - **mcqIndicatorBackgroundColor**: indicator inner background color
-  - **mcqIndicatorUpperColor**: indicator upper background color
-  - **mcqIndicatorLowerColor**: indicator lower background color
-  - **mcqIndicatorDrawableIcon**: indicator drawable icon
-  - **mcqIndicatorSizeFraction**: indicator height relative to inner background color (value 1 :indcator height = inner background height)
+- XML **Attributes** 
   - **animateItemOnClick**: enable/disable the menu item click animation
   - **allowItemRotationAnim**: enable/disable the menu item rotation animation
   - **numberOfMenuItems**: number of menu items .max is 5
@@ -83,7 +80,6 @@ It enable creating questionnaire with a lot of features and ease of use
   - **itemThreeIconRes**: drawable for third menu item
   - **itemFourIconRes**: drawable for fourth menu item
   - **itemFiveIconRes**: drawable for fifth menu item
-
   - **profileImage** : drwable for the profile image  
 
 ## Communication
@@ -94,9 +90,9 @@ It enable creating questionnaire with a lot of features and ease of use
 
 ## Credits
 
-ModesoQuestionnaire-Android is owned and maintained by [Modeso](http://modeso.ch). You can follow them on Twitter at [@modeso_ch](https://twitter.com/modeso_ch) for project updates and releases.
+ModesoActionOverlay-Android is owned and maintained by [Modeso](http://modeso.ch). You can follow them on Twitter at [@modeso_ch](https://twitter.com/modeso_ch) for project updates and releases.
 
 ## License
 
-ModesoQuestionnaire-Android is released under the MIT license. See LICENSE for details.
+ ModesoActionOverlay-Android is released under the MIT license. See LICENSE for details.
 
