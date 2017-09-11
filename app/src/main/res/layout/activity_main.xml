@@ -8,17 +8,17 @@
     android:orientation="vertical">
 
     <ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu
-        android:id="@+id/profile_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:animateItemOnClick="true"
-        app:allowItemRotationAnim="false"
-        app:itemOneIconRes="@drawable/option1_icon"
-        app:itemTwoIconRes="@drawable/option2_icon"
-        app:itemThreeIconRes="@drawable/option3_icon"
-        app:numberOfMenuItems="3"
-        app:handleIconRes="@drawable/icons_ellipsis"
-        app:profileImage="@drawable/friendly_face">
+    android:id="@+id/profile_menu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:animateItemOnClick="true"
+    app:allowItemRotationAnim="false"
+    app:itemOneIconRes="@drawable/option1_icon"
+    app:itemTwoIconRes="@drawable/option2_icon"
+    app:itemThreeIconRes="@drawable/option3_icon"
+    app:numberOfMenuItems="3"
+    app:handleIconRes="@drawable/icons_ellipsis"
+    app:profileImage="@drawable/friendly_face">
     </ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu>
 
     <TextView
