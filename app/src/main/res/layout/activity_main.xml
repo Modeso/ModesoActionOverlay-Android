@@ -17,9 +17,8 @@
         app:itemTwoIconRes="@drawable/option2_icon"
         app:itemThreeIconRes="@drawable/option3_icon"
         app:numberOfMenuItems="3"
-        app:handleIconRes="@android:drawable/ic_menu_add"
+        app:handleIconRes="@drawable/icons_ellipsis"
         app:profileImage="@drawable/friendly_face">
-
     </ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu>
 
     <TextView

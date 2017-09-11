@@ -3,12 +3,8 @@ package ch.modeso.profilemenuanimation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.List;
-
 import ch.modeso.mprofileanimatedmenu.widgets.AnimatedMenuItem;
 import ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu;
 

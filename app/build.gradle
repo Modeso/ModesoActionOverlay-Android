@@ -27,6 +27,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile project(":mprofileanimatedmenu")
-    //compile 'com.github.Modeso:ModesoActionOverlay-Android'
+    //adding jitpack support
+    compile 'com.github.Modeso:ModesoActionOverlay-Android:master-SNAPSHOT'
     testCompile 'junit:junit:4.12'
 }

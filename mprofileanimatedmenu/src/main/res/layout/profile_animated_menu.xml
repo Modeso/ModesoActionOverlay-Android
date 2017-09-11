@@ -30,7 +30,8 @@
         android:layout_height="48dp"
         android:layout_gravity="right|bottom"
         android:layout_marginRight="10dp"
-       />
+        android:padding="10dp"
+        android:scaleType="centerInside" />
 
     <ImageView
         android:id="@+id/close_menu"
