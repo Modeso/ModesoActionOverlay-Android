@@ -37,7 +37,7 @@ It enable creating animated Menu with a customized appearance
 - **Step 2:** Add the dependency to your module build.gradle
   ```
   	dependencies {
-	        compile 'com.github.Modeso:ModesoActionOverlay-Android:development-SNAPSHOT'
+	        compile 'com.github.Modeso:ModesoActionOverlay-Android:master-SNAPSHOT'
 	}
   ```
 
@@ -55,8 +55,8 @@ It enable creating animated Menu with a customized appearance
         app:itemTwoIconRes="@drawable/option2_icon"
         app:itemThreeIconRes="@drawable/option3_icon"
         app:numberOfMenuItems="3"
-        app:handleIconRes="@drawable/icons_ellipsis"
-        app:profileImage="@drawable/friendly_face">
+        app:handleIconRes="@drawable/handle_main_icon"
+        app:profileImage="@drawable/my_profile_image">
     </ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu>
 ```
 - in **Activity** or **Fragment**
