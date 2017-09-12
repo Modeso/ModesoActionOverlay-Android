@@ -205,11 +205,11 @@ public class ProfileAnimatedMenu extends FrameLayout {
         //Move animes//
         /////////////////////////////////////////
 
-        ObjectAnimator animX = ObjectAnimator.ofFloat(handle,"x"/*,point1X,point2X*/,finalX);
-        ObjectAnimator animY = ObjectAnimator.ofFloat(handle,"y"/*,point1Y,point2Y*/,finalY);
+        ObjectAnimator animX = ObjectAnimator.ofFloat(handle,"x",finalX);
+        ObjectAnimator animY = ObjectAnimator.ofFloat(handle,"y",finalY);
 
-        ObjectAnimator frontHandleAnimX = ObjectAnimator.ofFloat(frontHandle,"x"/*,point1X,point2X*/,finalX);
-        ObjectAnimator frontHandleAnimY = ObjectAnimator.ofFloat(frontHandle,"y"/*,point1Y,point2Y*/,finalY);
+        ObjectAnimator frontHandleAnimX = ObjectAnimator.ofFloat(frontHandle,"x",finalX);
+        ObjectAnimator frontHandleAnimY = ObjectAnimator.ofFloat(frontHandle,"y",finalY);
 
         //Compute the final radius of the circle
         double finalRadius = Math.sqrt(Math.pow(profileImage.getWidth(),2) + Math.pow(profileImage.getHeight(),2));
@@ -314,7 +314,6 @@ public class ProfileAnimatedMenu extends FrameLayout {
 
         animScaleX.setDuration(100);
         animScaleY.setDuration(100);
-        //animAlpha.setDuration(100);
         animRotation.setDuration(200);
 
         AnimatorSet animSet = new AnimatorSet();
@@ -382,8 +381,8 @@ public class ProfileAnimatedMenu extends FrameLayout {
         ObjectAnimator animX = ObjectAnimator.ofFloat(handle,"x",finalX);
         ObjectAnimator animY = ObjectAnimator.ofFloat(handle,"y",finalY);
 
-        ObjectAnimator frontHandleAnimX = ObjectAnimator.ofFloat(frontHandle,"x"/*,point1X,point2X*/,finalX);
-        ObjectAnimator frontHandleAnimY = ObjectAnimator.ofFloat(frontHandle,"y"/*,point1Y,point2Y*/,finalY);
+        ObjectAnimator frontHandleAnimX = ObjectAnimator.ofFloat(frontHandle,"x",finalX);
+        ObjectAnimator frontHandleAnimY = ObjectAnimator.ofFloat(frontHandle,"y",finalY);
 
         //Scale animes
         ObjectAnimator animScaleX = ObjectAnimator.ofFloat(handle,"scaleX",1);
