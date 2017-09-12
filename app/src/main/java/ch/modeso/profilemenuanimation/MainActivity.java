@@ -11,7 +11,8 @@ import ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu;
 
 public class MainActivity extends AppCompatActivity implements ProfileAnimatedMenu.OnOpenCloseListener {
 
-    private static  final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     private ProfileAnimatedMenu profileAnimatedMenu;
     private TextView selectedOptionText;
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements ProfileAnimatedMe
 
     @Override
     public void onActionStarted(int actionType) {
-
+        //Track animation actions here
     }
 
     @Override

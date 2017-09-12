@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.support.v4.view.animation.PathInterpolatorCompat;
 import android.util.AttributeSet;
@@ -15,11 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
-import android.view.animation.PathInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -55,15 +51,12 @@ public class ProfileAnimatedMenu extends FrameLayout {
     private ImageView profileImage;
     private TextView shieldView;
     private LinearLayout menuItemsContainer;
-    private FrameLayout containerView;
     private ImageView closeMenuBtn;
     private float originalHandleX  =-1;
     private float originalHandleY  =-1;
 
     private boolean menuOpened = false;
     private static final float FINAL_ALPHA = 0.91f;
-    private AnimatorSet openMenuAnimatorSet ;
-    private AnimatorSet closeMenuAnimatorSet ;
     private boolean openRunning = false;
     private boolean closeRunning = false;
 
@@ -136,7 +129,6 @@ public class ProfileAnimatedMenu extends FrameLayout {
         menuItemsContainer = (LinearLayout) findViewById(R.id.menue_items_container);
         handle = (ImageView) findViewById(R.id.handle_view);
         frontHandle = (ImageView) findViewById(R.id.front_handle);
-        containerView = (FrameLayout) findViewById(R.id.profile_container);
         closeMenuBtn = (ImageView) findViewById(R.id.close_menu);
         handle.setOnClickListener(new OnClickListener() {
             @Override
@@ -168,7 +160,6 @@ public class ProfileAnimatedMenu extends FrameLayout {
     }
 
     void initMenuItems(){
-        /*if( !isInEditMode())*/ {
             int childCount = menuItemsContainer.getChildCount();
             for (int i = 0; i < childCount; i++) {
                 View view = menuItemsContainer.getChildAt(i);
@@ -192,7 +183,6 @@ public class ProfileAnimatedMenu extends FrameLayout {
                 if (i >= numberOfMenuItems)
                     item.setVisibility(GONE);
             }
-        }
     }
 
     /**
@@ -201,11 +191,10 @@ public class ProfileAnimatedMenu extends FrameLayout {
     public void openMenu(){
         if(openRunning)
             return;
-
-        //animating fronhandle disappearance
+        //animating front handle disappearance
         ObjectAnimator disappearAnim = ObjectAnimator.ofFloat(frontHandle,"alpha",0f);
 
-        //frontHandle.setImageResource(0);
+
         openRunning =  true;
         originalHandleX = handle.getX();
         originalHandleY = handle.getY();
@@ -225,7 +214,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
         //Compute the final radius of the circle
         double finalRadius = Math.sqrt(Math.pow(profileImage.getWidth(),2) + Math.pow(profileImage.getHeight(),2));
         float finalScaleX = ((float) finalRadius/handle.getWidth())+1;
-        float finalScaleY = finalScaleX;
+        float finalScaleY = finalScaleX;//Both X and Y should be the same
 
         //Scale animes
         ObjectAnimator animScaleX = ObjectAnimator.ofFloat(handle,"scaleX",finalScaleX);
@@ -269,10 +258,9 @@ public class ProfileAnimatedMenu extends FrameLayout {
         closeBtnAnimRotation.setDuration(350);
 
 
-        openMenuAnimatorSet = new AnimatorSet();
+        AnimatorSet openMenuAnimatorSet = new AnimatorSet();
         openMenuAnimatorSet.playTogether(animX, animY,animScaleX,animScaleY,animAlpha,shieldAnimAlpha,
                 closeBtnAnimAlpha,closeBtnAnimRotation,disappearAnim,frontHandleAnimX,frontHandleAnimY);
-        //openMenuAnimatorSet.setInterpolator(new AccelerateInterpolator(1.5f));
         openMenuAnimatorSet.start();
         if(onOpenCloseListener != null)
             onOpenCloseListener.onActionStarted(OnOpenCloseListener.
@@ -353,7 +341,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
     /**
      * Animates the passed view as following :scale downed to 0 ,
      * reduced alpha to 0 and a 360 degree rotation if allowed
-     * @param view
+     * @param view the view to animate
      * @param delay delay before starting the animation
      */
     void animateMenuItemClose(View view,long delay){
@@ -385,7 +373,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
         if(closeRunning)
             return;
         closeRunning = true;
-        //animating fronhandle appearance
+        //animating front handle appearance
         ObjectAnimator appearAnim = ObjectAnimator.ofFloat(frontHandle,"alpha",1f);
         //Move with scale animation
         float finalX = originalHandleX;
@@ -434,11 +422,10 @@ public class ProfileAnimatedMenu extends FrameLayout {
         frontHandleAnimX.setInterpolator(new AccelerateDecelerateInterpolator());
         frontHandleAnimY.setInterpolator(new AccelerateDecelerateInterpolator());
 
-        closeMenuAnimatorSet = new AnimatorSet();
+        AnimatorSet closeMenuAnimatorSet = new AnimatorSet();
         closeMenuAnimatorSet.playTogether(animX, animY,animScaleX,animScaleY,animAlpha,shieldAnimAlpha,
                 closeBtnAnimAlpha,closeBtnAnimRotation,appearAnim,frontHandleAnimX,frontHandleAnimY);
         closeMenuAnimatorSet.setStartDelay(150);
-        //closeMenuAnimatorSet.setInterpolator(OvershootInterpolator);
         animateMenuItemsClose();
         closeMenuAnimatorSet.start();
         if(onOpenCloseListener != null)
@@ -461,7 +448,6 @@ public class ProfileAnimatedMenu extends FrameLayout {
                 closeRunning = false;
                 if(handleImageRes>0) {
                     frontHandle.setAlpha(1.0f);
-                    //frontHandle.setImageResource(handleImageRes);
                 }
                 if(onOpenCloseListener != null)
                     onOpenCloseListener.onActionEnded(OnOpenCloseListener.

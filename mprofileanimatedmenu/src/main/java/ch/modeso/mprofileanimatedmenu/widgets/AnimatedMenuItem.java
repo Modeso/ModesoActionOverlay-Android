@@ -8,8 +8,6 @@ import android.support.graphics.drawable.VectorDrawableCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
-
-
 import ch.modeso.mprofileanimatedmenu.R;
 
 /**
@@ -119,6 +117,7 @@ public class AnimatedMenuItem extends android.support.v7.widget.AppCompatImageVi
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        //Ensure square view with width = height
         super.onMeasure(widthMeasureSpec, widthMeasureSpec);
     }
 
