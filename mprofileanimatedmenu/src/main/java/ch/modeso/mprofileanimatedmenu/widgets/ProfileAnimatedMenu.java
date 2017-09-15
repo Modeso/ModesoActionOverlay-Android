@@ -5,8 +5,10 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.animation.PathInterpolatorCompat;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -160,12 +162,19 @@ public class ProfileAnimatedMenu extends FrameLayout {
     }
 
     void initMenuItems(){
+        int paddingForThree = getResources().getDimensionPixelOffset(R.dimen.padding_for_three);
+        int paddingForThreeOrMore = getResources().getDimensionPixelOffset(R.dimen.padding_for_three_or_more);
             int childCount = menuItemsContainer.getChildCount();
             for (int i = 0; i < childCount; i++) {
                 View view = menuItemsContainer.getChildAt(i);
                 if ((!(view instanceof AnimatedMenuItem)))
                     throw new IllegalArgumentException("menu Items should be instances of AnimatedMenuItem !!");
                 AnimatedMenuItem item = (AnimatedMenuItem) view;
+                if(childCount > 3)
+                   item.setPadding(paddingForThreeOrMore,paddingForThreeOrMore,paddingForThreeOrMore,paddingForThreeOrMore);
+                else
+                    item.setPadding(paddingForThree,paddingForThree,paddingForThree,paddingForThree);
+
                 if (animateItemOnclick)
                     item.setAnimateOnClickEnabled(true);
 

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="handle_width">30dp</dimen>
+    <dimen name="padding_for_three">12dp</dimen>
+    <dimen name="padding_for_three_or_more">5dp</dimen>
 </resources>
