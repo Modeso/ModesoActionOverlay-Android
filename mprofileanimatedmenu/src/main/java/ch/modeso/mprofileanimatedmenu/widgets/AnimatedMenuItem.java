@@ -110,9 +110,10 @@ public class AnimatedMenuItem extends android.support.v7.widget.AppCompatImageVi
     }
 
     private void init(){
-        VectorDrawableCompat vdc =  VectorDrawableCompat.create(getResources(),
-                R.drawable.bg_vector,getContext().getTheme());
-        setBackground(vdc);
+        setBackground(VectorDrawableCompat.create(getResources(),R.drawable.item_bg_vector,
+                getContext().getTheme()));
+
+
     }
 
     @Override

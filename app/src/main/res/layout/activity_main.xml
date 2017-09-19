@@ -30,7 +30,7 @@
                 app:itemThreeIconRes="@drawable/icons_share"
                 app:itemTwoIconRes="@drawable/icons_download"
                 app:numberOfMenuItems="3"
-                app:profileImage="@drawable/friendly_face"></ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu>
+                app:profileImage="@drawable/profile_img"></ch.modeso.mprofileanimatedmenu.widgets.ProfileAnimatedMenu>
 
             <TextView
                 android:id="@+id/selected_option_item"
@@ -56,7 +56,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/drawer_icon"

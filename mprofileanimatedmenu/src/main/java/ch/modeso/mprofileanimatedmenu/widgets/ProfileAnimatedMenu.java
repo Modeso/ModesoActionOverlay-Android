@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
@@ -58,7 +59,8 @@ public class ProfileAnimatedMenu extends FrameLayout {
     private float originalHandleY  =-1;
 
     private boolean menuOpened = false;
-    private static final float FINAL_ALPHA = 0.91f;
+    private static final float FINAL_ALPHA = 0.9f;
+    private static final float ITEM_FINAL_ALPHA = 1f;
     private boolean openRunning = false;
     private boolean closeRunning = false;
 
@@ -162,19 +164,12 @@ public class ProfileAnimatedMenu extends FrameLayout {
     }
 
     void initMenuItems(){
-        int paddingForThree = getResources().getDimensionPixelOffset(R.dimen.padding_for_three);
-        int paddingForThreeOrMore = getResources().getDimensionPixelOffset(R.dimen.padding_for_three_or_more);
             int childCount = menuItemsContainer.getChildCount();
             for (int i = 0; i < childCount; i++) {
                 View view = menuItemsContainer.getChildAt(i);
                 if ((!(view instanceof AnimatedMenuItem)))
                     throw new IllegalArgumentException("menu Items should be instances of AnimatedMenuItem !!");
                 AnimatedMenuItem item = (AnimatedMenuItem) view;
-                if(childCount > 3)
-                   item.setPadding(paddingForThreeOrMore,paddingForThreeOrMore,paddingForThreeOrMore,paddingForThreeOrMore);
-                else
-                    item.setPadding(paddingForThree,paddingForThree,paddingForThree,paddingForThree);
-
                 if (animateItemOnclick)
                     item.setAnimateOnClickEnabled(true);
 
@@ -193,7 +188,6 @@ public class ProfileAnimatedMenu extends FrameLayout {
                     item.setVisibility(GONE);
             }
     }
-
     /**
      * Opens the menu with animation
      */
@@ -318,7 +312,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
     void animateMenuItemOpen(View view,long delay){
         ObjectAnimator animScaleX = ObjectAnimator.ofFloat(view,"scaleX",0.0f,1.0f);
         ObjectAnimator animScaleY = ObjectAnimator.ofFloat(view,"scaleY",0.0f,1.0f);
-        ObjectAnimator animAlpha = ObjectAnimator.ofFloat(view,"alpha",0,1.0f);
+        ObjectAnimator animAlpha = ObjectAnimator.ofFloat(view,"alpha",0,ITEM_FINAL_ALPHA);
         ObjectAnimator animRotation = ObjectAnimator.ofFloat(view,"rotation",0,360.0f);
 
         animScaleX.setDuration(100);
@@ -355,7 +349,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
     void animateMenuItemClose(View view,long delay){
         ObjectAnimator animScaleX = ObjectAnimator.ofFloat(view,"scaleX",1.0f,0.2f);
         ObjectAnimator animScaleY = ObjectAnimator.ofFloat(view,"scaleY",1.0f,0.2f);
-        ObjectAnimator animAlpha = ObjectAnimator.ofFloat(view,"alpha",1,0.0f);
+        ObjectAnimator animAlpha = ObjectAnimator.ofFloat(view,"alpha",ITEM_FINAL_ALPHA,0.0f);
         ObjectAnimator animRotation = ObjectAnimator.ofFloat(view,"rotation",360.0f,0);
 
         animScaleX.setDuration(200);
