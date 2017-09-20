@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <ch.modeso.modesoactionoverlay.widgets.ProfileAnimatedMenu
+                android:id="@+id/profile_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:allowItemRotationAnim="false"
+                app:animateItemOnClick="true"
+                app:handleIconRes="@drawable/icons_ellipsis"
+                app:itemOneIconRes="@drawable/icons_camera"
+                app:itemThreeIconRes="@drawable/icons_share"
+                app:itemTwoIconRes="@drawable/icons_download"
+                app:numberOfMenuItems="3"
+                app:profileImage="@drawable/profile_img"></ch.modeso.modesoactionoverlay.widgets.ProfileAnimatedMenu>
+
+            <TextView
+                android:id="@+id/selected_option_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/chart_img" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/drawer_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_menu_black_24dp" />
+
+        <TextView
+            android:id="@+id/account_name_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Adam Hudson"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/search_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:clickable="false"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_search_black_24dp" />
+    </LinearLayout>
+
+
+
+</FrameLayout>
