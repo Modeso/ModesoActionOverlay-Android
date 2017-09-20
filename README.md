@@ -37,7 +37,7 @@ It enable creating animated Menu with a customized appearance
 - **Step 2:** Add the dependency to your module build.gradle
   ```
   	dependencies {
-	        compile 'com.github.Modeso:ModesoActionOverlay-Android:master-SNAPSHOT'
+	        compile 'com.github.Modeso:ModesoActionOverlay-Android:1.0'
 	}
   ```
 
