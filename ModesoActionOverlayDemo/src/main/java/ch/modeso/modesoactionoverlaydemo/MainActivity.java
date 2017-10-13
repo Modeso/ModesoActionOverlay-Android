@@ -25,13 +25,8 @@ public class MainActivity extends AppCompatActivity implements ProfileAnimatedMe
             item.setOnItemClicked(new AnimatedMenuItem.OnMenuItemClicked() {
                 @Override
                 public void onMenuItemClicked(AnimatedMenuItem item) {
-                    if(item.getIndex() == 1){
-                        profileAnimatedMenu.setNumberOfMenuItems(3);
-                    }
-                    if(item.getIndex() == 2){
-                        profileAnimatedMenu.setOptionFourIconRes(R.drawable.ic_outline_blank_black_24dp);
-                        profileAnimatedMenu.setOptionFiveIconRes(R.drawable.icons_download);
-                        profileAnimatedMenu.setNumberOfMenuItems(5);
+                    if(profileAnimatedMenu.isMenuOpened()) {
+                        profileAnimatedMenu.closeMenu();
                     }
                 }
             });
