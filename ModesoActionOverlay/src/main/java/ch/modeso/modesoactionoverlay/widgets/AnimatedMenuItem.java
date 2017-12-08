@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
@@ -110,8 +112,8 @@ public class AnimatedMenuItem extends android.support.v7.widget.AppCompatImageVi
     }
 
     private void init(){
-        setBackground(VectorDrawableCompat.create(getResources(),R.drawable.item_bg_vector,
-                getContext().getTheme()));
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        setBackground(ContextCompat.getDrawable(getContext(),R.drawable.item_bg_selector));
 
 
     }

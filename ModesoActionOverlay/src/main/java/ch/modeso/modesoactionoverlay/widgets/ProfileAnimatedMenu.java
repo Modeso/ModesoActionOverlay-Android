@@ -230,12 +230,14 @@ public class ProfileAnimatedMenu extends FrameLayout {
         ObjectAnimator closeBtnAnimAlpha = ObjectAnimator.ofFloat(closeMenuBtn,"alpha",1.0f);
         ObjectAnimator closeBtnAnimRotation = ObjectAnimator.ofFloat(closeMenuBtn,"rotation",180.0f);
 
+        final int X_TRANSLATION_ANIMATION_DURATION = 150;
+        final int Y_TRANSLATION_ANIMATION_DURATION = 150;
 
-        animX.setDuration(150);
-        animY.setDuration(150);
+        animX.setDuration(X_TRANSLATION_ANIMATION_DURATION);
+        animY.setDuration(Y_TRANSLATION_ANIMATION_DURATION);
 
-        frontHandleAnimX.setDuration(150);
-        frontHandleAnimY.setDuration(150);
+        frontHandleAnimX.setDuration(X_TRANSLATION_ANIMATION_DURATION);
+        frontHandleAnimY.setDuration(Y_TRANSLATION_ANIMATION_DURATION);
 
         //A cubic-bezier curve interpolator for move animes
         Interpolator interpolator = PathInterpolatorCompat.create(0.2f,0.4f,//First Point
@@ -246,10 +248,15 @@ public class ProfileAnimatedMenu extends FrameLayout {
         animScaleX.setInterpolator(new AccelerateInterpolator(1.5f));
         animScaleY.setInterpolator(new AccelerateInterpolator(1.5f));
 
-        animScaleX.setDuration(200);
-        animScaleY.setDuration(200);
+        final int X_SCALE_ANIMATION_DURATION = 200;
+        final int Y_SCALE_ANIMATION_DURATION = 200;
+        final int Y_ALPHA_ANIMATION_DURATION = 400;
+
+        animScaleX.setDuration(X_SCALE_ANIMATION_DURATION);
+        animScaleY.setDuration(Y_SCALE_ANIMATION_DURATION);
         animScaleX.setStartDelay(130);
         animScaleY.setStartDelay(130);
+
         animAlpha.setDuration(400);
         disappearAnim.setDuration(150);
         shieldAnimAlpha.setDuration(200);
@@ -303,7 +310,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
         int childCount = menuItemsContainer.getChildCount();
         for(int i = 0;i<childCount;i++){
             View view = menuItemsContainer.getChildAt(i);
-            animateMenuItemOpen(view,i*10);
+            animateMenuItemOpen(view,i*40);
         }
     }
     void animateMenuItemOpen(View view,long delay){
@@ -312,8 +319,12 @@ public class ProfileAnimatedMenu extends FrameLayout {
         ObjectAnimator animAlpha = ObjectAnimator.ofFloat(view,"alpha",0,ITEM_FINAL_ALPHA);
         ObjectAnimator animRotation = ObjectAnimator.ofFloat(view,"rotation",0,360.0f);
 
-        animScaleX.setDuration(100);
-        animScaleY.setDuration(100);
+        final int X_SCALE_ANIMATION_DURATION = 300;
+        final int Y_SCALE_ANIMATION_DURATION = 300;
+
+        animScaleX.setDuration(X_SCALE_ANIMATION_DURATION);
+        animScaleY.setDuration(Y_SCALE_ANIMATION_DURATION);
+
         animRotation.setDuration(200);
 
         AnimatorSet animSet = new AnimatorSet();
@@ -322,7 +333,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
         else
             animSet.playTogether(animScaleX,animScaleY,animAlpha);
         animSet.setStartDelay(delay);
-        animSet.setInterpolator(new OvershootInterpolator(5));
+        animSet.setInterpolator(new AccelerateDecelerateInterpolator());
         animSet.start();
     }
 
@@ -333,7 +344,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
         int childCount = menuItemsContainer.getChildCount();
         for(int i = childCount-1;i>-1;i--){
             View view = menuItemsContainer.getChildAt(i);
-            animateMenuItemClose(view,(childCount-i-1)*30);
+            animateMenuItemClose(view,(childCount-i-1)*80);
         }
     }
 
@@ -349,10 +360,15 @@ public class ProfileAnimatedMenu extends FrameLayout {
         ObjectAnimator animAlpha = ObjectAnimator.ofFloat(view,"alpha",ITEM_FINAL_ALPHA,0.0f);
         ObjectAnimator animRotation = ObjectAnimator.ofFloat(view,"rotation",360.0f,0);
 
-        animScaleX.setDuration(200);
-        animScaleY.setDuration(200);
-        animAlpha.setDuration(300);
-        animRotation.setDuration(200);
+        final int X_SCALE_ANIMATION_DURATION = 400;
+        final int Y_SCALE_ANIMATION_DURATION = 400;
+        final int ALPHA_ANIMATION_DURATION = 300;
+
+        animScaleX.setDuration(X_SCALE_ANIMATION_DURATION);
+        animScaleY.setDuration(Y_SCALE_ANIMATION_DURATION);
+        animAlpha.setDuration(ALPHA_ANIMATION_DURATION);
+
+        animRotation.setDuration(500);
 
         AnimatorSet animSet = new AnimatorSet();
         if(allowItemRotationAnim)
@@ -399,19 +415,19 @@ public class ProfileAnimatedMenu extends FrameLayout {
         ObjectAnimator closeBtnAnimAlpha = ObjectAnimator.ofFloat(closeMenuBtn,"alpha",0.0f);
         ObjectAnimator closeBtnAnimRotation = ObjectAnimator.ofFloat(closeMenuBtn,"rotation",0.0f);
 
-        animX.setDuration(400);
-        animY.setDuration(400);
+        animX.setDuration(600);
+        animY.setDuration(600);
 
-        frontHandleAnimX.setDuration(400);
-        frontHandleAnimY.setDuration(400);
+        frontHandleAnimX.setDuration(600);
+        frontHandleAnimY.setDuration(600);
 
-        appearAnim.setDuration(200);
+        appearAnim.setDuration(400);
         appearAnim.setStartDelay(200);
 
-        animScaleX.setDuration(200);
-        animScaleY.setDuration(200);
-        animAlpha.setDuration(200);
-        shieldAnimAlpha.setDuration(398);
+        animScaleX.setDuration(400);
+        animScaleY.setDuration(400);
+        animAlpha.setDuration(400);
+        shieldAnimAlpha.setDuration(600);
 
         closeBtnAnimAlpha.setDuration(350);
         closeBtnAnimRotation.setDuration(350);
@@ -424,7 +440,7 @@ public class ProfileAnimatedMenu extends FrameLayout {
         AnimatorSet closeMenuAnimatorSet = new AnimatorSet();
         closeMenuAnimatorSet.playTogether(animX, animY,animScaleX,animScaleY,animAlpha,shieldAnimAlpha,
                 closeBtnAnimAlpha,closeBtnAnimRotation,appearAnim,frontHandleAnimX,frontHandleAnimY);
-        closeMenuAnimatorSet.setStartDelay(150);
+        closeMenuAnimatorSet.setStartDelay(300);
         animateMenuItemsClose();
         closeMenuAnimatorSet.start();
         if(onOpenCloseListener != null)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportHeight="8"
+    android:viewportWidth="8">
+
+
+    <!-- This path draws a red circle. -->
+    <path
+        android:fillColor="#F2F0AAAE"
+        android:pathData="M 0,4 C 0,1.8 1.8,0 4,0 C 6.2,0 8,1.8 8,4 C 8,6.2 6.2,8 4,8 C 1.8,8 0,6.2 0,4"/>
+
+</vector>
+   <!-- android:pathData="M 0,20 C 0,14 14,0 20,0 C 27,0 40,14 40,20 C 40,27 27,40 20,40 C 14,40 0,27 0,20"/>-->
