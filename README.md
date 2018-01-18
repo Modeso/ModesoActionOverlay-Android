@@ -90,7 +90,7 @@ It enable creating animated Menu with a customized appearance
 
 ## Credits
 
-ModesoActionOverlay-Android is owned and maintained by [Modeso](http://modeso.ch). You can follow them on Twitter at [@modeso_ch](https://twitter.com/modeso_ch) for project updates and releases.
+ModesoActionOverlay-Android is owned and maintained by [Modeso](http://modeso.ch) Using [Anton Aheichanka](https://dribbble.com/madebyanton)'s [design](https://dribbble.com/shots/1977070-Profile-Screen-Animation). You can follow them on Twitter at [@modeso_ch](https://twitter.com/modeso_ch) for project updates and releases.
 
 ## License
 
